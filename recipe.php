@@ -7,8 +7,14 @@
 </head>
 <body>
   <?php
+    // Connexion à la base de données
+  $host = 'mysql-thesavorist.alwaysdata.net  ';
+  $dbname = 'thesavorist';
+  $username = '295285';
+  $password = '*OnadesnotesIncr13*';
+
   // Connexion à la base de données et récupération de la recette
-  $db = new PDO('mysql:host=localhost;dbname=thesavorist', 'user', 'password');
+  $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
   $stmt = $db->prepare('SELECT * FROM recettes WHERE id = :id');
   $stmt->execute(array(':id' => $_GET['id']));
   $recipe = $stmt->fetch();
